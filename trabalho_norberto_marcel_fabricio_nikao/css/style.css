@@ -1,0 +1,194 @@
+/* ==========================================================================
+   Configurações Gerais e Reset
+   ========================================================================== */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: #f4f6f9; /* Neutro claro */
+    color: #1e293b; /* Grafite escuro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ==========================================================================
+   Estrutura Lado a Lado (A Mágica está aqui!)
+   ========================================================================== */
+.interface-principal {
+    display: flex;
+    flex-direction: row; /* Força um do lado do outro */
+    align-items: flex-start; /* Alinha os blocos pelo topo */
+    justify-content: center;
+    gap: 30px; /* Espaço cirúrgico entre os dois blocos */
+    width: 100%;
+    max-width: 1000px; /* Largura total somando os dois lados */
+}
+
+/* ==========================================================================
+   Estilização dos Blocos (Containers)
+   ========================================================================== */
+.container, .container_lista {
+    background-color: #ffffff;
+    flex: 1; /* Faz os dois lados terem exatamente o mesmo tamanho */
+    min-width: 320px; /* Evita que eles fiquem esmagados */
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(30, 41, 59, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+h1, H1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f172a; /* Azul Escuro */
+    margin-bottom: 25px;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+/* ==========================================================================
+   Formulário e Input
+   ========================================================================== */
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #0f172a;
+    background-color: #f8fafc;
+    margin-bottom: 20px;
+    transition: all 0.25s ease;
+}
+
+input[type="text"]:focus {
+    background-color: #ffffff;
+    border-color: #0284c7; /* Azul Claro */
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+}
+
+/* ==========================================================================
+   Botões (Cores Sólidas: Azul Escuro e Azul Claro)
+   ========================================================================== */
+button {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Adicionar: Azul Escuro */
+button[onclick="adicionarEstado()"] {
+    background-color: #1e3a8a;
+    color: #ffffff;
+}
+
+button[onclick="adicionarEstado()"]:hover {
+    background-color: #1d4ed8;
+}
+
+/* Controles: Azul Claro */
+button[onclick="organizarEstados()"],
+button[onclick="consultar()"],
+button[onclick="alterar()"] {
+    background-color: #0ea5e9;
+    color: #ffffff;
+}
+
+button[onclick="organizarEstados()"]:hover,
+button[onclick="consultar()"]:hover,
+button[onclick="alterar()"]:hover {
+    background-color: #0284c7;
+}
+
+/* Deletar: Neutro Escuro (Mantém a harmonia) */
+button[onclick="deletar()"] {
+    background-color: #334155;
+    color: #ffffff;
+    margin-bottom: 0;
+}
+
+button[onclick="deletar()"]:hover {
+    background-color: #1e293b;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* ==========================================================================
+   Lista de Estados
+   ========================================================================== */
+#listaEstados {
+    list-style: none;
+    padding: 0;
+}
+
+#listaEstados li {
+    background-color: #f8fafc;
+    padding: 14px 18px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #334155;
+    transition: all 0.2s ease;
+}
+
+#listaEstados li:hover {
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+    color: #0f172a;
+}
+
+/* ==========================================================================
+   Classe Especial .estiloNovo (Ativada ao Ordenar)
+   ========================================================================== */
+.estiloNovo {
+    border: 2px solid #0ea5e9 !important; /* Borda Azul Claro */
+    background-color: #f0f9ff !important;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.estiloNovo li {
+    background-color: #ffffff !important;
+    border-left: 4px solid #1e3a8a !important; /* Detalhe em Azul Escuro */
+}
+
+/* ==========================================================================
+   Responsividade (Para telas pequenas de celular)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .interface-principal {
+        flex-direction: column; /* No celular vira uma coluna só */
+        align-items: center;
+    }
+    .container, .container_lista {
+        width: 100%;
+    }
+}
